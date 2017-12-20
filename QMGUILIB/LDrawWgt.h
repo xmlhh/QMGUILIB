@@ -14,11 +14,19 @@
 #include "qmguilib_global.h"
 #include "LDrawFilterWgt.h"
 #include "IconHelper.h"
+#include "LCommon.h"
 
 #include <QObject>
 #include <QtWidgets/QWidget>
-#include <QPushButton>
-#include <QLabel>
+
+class QPushButton;
+class QToolButton;
+class QLabel;
+class QPixmap;
+class QSizePolicy;
+class QButtonGroup;
+class QMenu;
+class QAction;
 
 
 class QMGUILIBSHARED_EXPORT LDrawWgt : public QWidget
@@ -109,6 +117,32 @@ private slots:
     */
     void OnOptionsBtn();
 
+    /**
+    * @author by lhh
+    * @brief 按钮组的槽，组内按钮互斥
+    * @param 当前点击的按钮
+    * @return void
+    */
+    void OnGroupClickedBtn(QAbstractButton* cBtn);
+
+    /**
+    * @author by LHH
+    * @brief 切换界面样式
+    * @param bool
+    * @return void
+    */
+    void OnSetStyleLightBlue(bool );
+
+    void OnSetStyleSkyBlue(bool );
+
+    void OnSetStyleGray(bool );
+
+    void OnSetStyleBlack(bool );
+
+    void OnSetStylePsBlack(bool );
+
+    void OnSetStyleVsBlack(bool );
+
 public:
     // 中心窗口
     QWidget *m_pCenterWidget;
@@ -134,6 +168,10 @@ public:
     // 关闭按钮控件
     QPushButton *m_pCloseBtn;
 
+    // 按钮组
+    QButtonGroup *m_pToolGroupBtn;
+
+
 private:
     /**
     * @author by LHH
@@ -143,13 +181,29 @@ private:
     */
     void InitUI();
 
+    void setUpDlgUi();
+
     /**
     * @author by LHH
-    * @brief 设置基本布局
-    * @param 无
+    * @brief 标题栏：小边标题栏+小按钮组+小菜单栏（invisible）
     * @return void
     */
-    void setUpDlgUi();
+    void setUpDlgUi_1();
+
+    /**
+    * @author by LHH
+    * @brief 标题栏：小边标题栏+小按钮组（上）+大按钮组(菜单)（下）
+    * @return void
+    */
+    void setUpDlgUi_2();
+
+    /**
+    * @author by LHH
+    * @brief 标题栏：大标题栏（左）+ 小按钮组（右上）
+    * @return void
+    */
+    void setUpDlgUi_3();
+
 
     // 主窗口
     QWidget *m_pBgWidget;
@@ -157,8 +211,12 @@ private:
     // 指针事件类对象
     LDrawFilterWgt *m_pFilter;
 
+    // 按钮组互斥标识
+    bool m_bFlagBtn;
+
     // 最大化/还原的标识
     bool m_bMaxFlag;
+
 };
 
 #endif // LDRAWWGT_H

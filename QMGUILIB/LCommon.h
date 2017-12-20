@@ -5,6 +5,8 @@
 #include <QtGui>
 #include <QDesktopWidget>
 
+#include "LMessageBox.h"
+
 class LCommon: public QObject
 {
 public:
@@ -58,6 +60,49 @@ public:
         return RegExp.exactMatch(IP);
     }
 
+    //显示信息框,仅确定按钮
+    static void ShowMessageBoxInfo(const QString& strText)
+    {
+        //LMessageBox::Instance()->setMsgType(strText, 0);
+        //LMessageBox::Instance()->show();
+        LMessageBox *msgBox = new LMessageBox;
+        msgBox->setMsgType(strText, 0);
+        msgBox->show();
+
+    }
+
+    //显示警告框,仅确定按钮
+    static void ShowMessageBoxWarning(const QString& strText)
+    {
+        //LMessageBox::Instance()->setMsgType(strText, 2);
+        //LMessageBox::Instance()->show();
+        LMessageBox *msgBox = new LMessageBox;
+        msgBox->setMsgType(strText, 2);
+        msgBox->show();
+
+    }
+
+    //显示错误框,仅确定按钮
+    static void ShowMessageBoxError(const QString& strText)
+    {
+        //LMessageBox::Instance()->setMsgType(strText, 3);
+        //LMessageBox::Instance()->show();
+        LMessageBox *msgBox = new LMessageBox;
+        msgBox->setMsgType(strText, 3);
+        msgBox->show();
+
+    }
+
+    //显示询问框,确定和取消按钮
+    static int ShowMessageBoxQuesion(const QString& strText)
+    {
+        //LMessageBox::Instance()->setMsgType(strText, 1);
+        //LMessageBox::Instance()->show();
+        LMessageBox *msgBox = new LMessageBox;
+        msgBox->setMsgType(strText, 1);
+        msgBox->show();
+        return 0;
+    }
 
     //延时
     static void Sleep(int sec)

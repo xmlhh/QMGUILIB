@@ -13,12 +13,15 @@ DEFINES += QMGUILIB_LIBRARY
 
 SOURCES += LDrawWgt.cpp \
     IconHelper.cpp \
-    LDrawFilterWgt.cpp
+    LDrawFilterWgt.cpp \
+    LMessageBox.cpp
 
 HEADERS += LDrawWgt.h\
         qmguilib_global.h \
     IconHelper.h \
-    LDrawFilterWgt.h
+    LDrawFilterWgt.h \
+    LCommon.h \
+    LMessageBox.h
 
 unix {
     target.path = /usr/lib
@@ -42,3 +45,6 @@ win32{
     DESTDIR += $$LXRAMELIB_ROOT     #指定生成LIB的路径
     DLLDESTDIR = $$LXRAMEBIN_ROOT   #指定生成DLL的路径
 }
+
+FORMS += \
+    LMessageBox.ui

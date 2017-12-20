@@ -35,7 +35,12 @@ bool LDrawFilterWgt::eventFilter(QObject *obj, QEvent *event)
                 m_posMouse = pMouseEvent->globalPos();
                 m_oldGeometry = pWidget->geometry();
 
+// @Modify
+#if 1
+                if (m_bDragable && pMouseEvent->pos().y() < 100)
+#else
                 if (m_bDragable && pMouseEvent->pos().y() < 35)
+#endif
                 {
                     // 只有点击到头部才能拖动
                     m_bDrag = true;
@@ -188,7 +193,12 @@ bool LDrawFilterWgt::eventFilter(QObject *obj, QEvent *event)
 //                QMouseEvent *pMouseEvent = static_cast<QMouseEvent *>(event);
 //                QWidget *pWidget = qobject_cast<QWidget *>(obj);
 
-//                if (pMouseEvent->pos().y() <35)
+// @Modify
+#if 1
+                //if (pMouseEvent->pos().y() < 100)
+#else
+                if (pMouseEvent->pos().y() < 35)
+#endif
 //                {
 //                    if (pWidget->windowState() & Qt::WindowMaximized)
 //                    {
