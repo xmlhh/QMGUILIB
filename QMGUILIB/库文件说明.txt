@@ -1,0 +1,35 @@
+
+自绘窗口头文件的使用：
+
+LDrawFilterWgt.h
+LDrawFilterWgt.cpp
+LDrawWgt.h
+LDrawWgt.cpp
+
+
+
+1.继承
+class QTest: public LDrawWgt
+
+2.构造函数
+QTest::QTest(QWidget *parent)
+    : LDrawWgt(parent)
+
+3.Ui设置
+ui.setupUi(m_pCenterWidget);
+
+4. 最大化、窗口拉伸
+
+
+无法包含头文件错误处理：
+工程属性 --> C/C++ -->附加包含目录
+
+$(QTDIR)\include\QtANGLE
+
+5. ttf图形字库的使用
+IconHelper.h
+IconHelper.cpp
+
+5. 三种界面标题、菜单布局供开发者选择
+
+

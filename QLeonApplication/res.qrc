@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Data/Css/black.css</file>
+        <file>Data/Css/blue_1.css</file>
+        <file>Data/Css/blue_2.css</file>
+        <file>Data/Css/blue_new.css</file>
+        <file>Data/Css/fontawesome-webfont.ttf</file>
+        <file>Data/Css/gray.css</file>
+        <file>Data/Css/navy.css</file>
+        <file>Data/Css/qt_zh_CN.qm</file>
+        <file>Data/Image/add-line_horizontal.png</file>
+        <file>Data/Image/add-line_vertical.png</file>
+        <file>Data/Image/array_down.png</file>
+        <file>Data/Image/borderBack.png</file>
+        <file>Data/Image/error.png</file>
+        <file>Data/Image/Font Awesome Cheatsheet.png</file>
+        <file>Data/Image/Icon.png</file>
+        <file>Data/Image/info.png</file>
+        <file>Data/Image/question.png</file>
+        <file>Data/Image/sub-line_horizontal.png</file>
+        <file>Data/Image/sub-line_vertical.png</file>
+        <file>Data/Image/CheckBox_checked.png</file>
+        <file>Data/Image/CheckBox_unchecked.png</file>
+        <file>Data/Image/radio_Checked.png</file>
+        <file>Data/Image/radio_UnCheck.png</file>
+    </qresource>
+</RCC>
