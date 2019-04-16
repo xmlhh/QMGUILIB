@@ -24,6 +24,23 @@ public:
     */
     void InitUI();
 
+    /*
+    * @author by lhh
+    * @brief 控件的信号连接
+    * @param 无
+    * @return void
+    */
+    void SignalConnects();
+
+private slots:
+    void onInfomationBtn();
+
+    void onQuestionBtn();
+
+    void onWarningBtn();
+
+    void onErrorBtn();
+
 private:
     Ui::LeonWgt *ui;
 };

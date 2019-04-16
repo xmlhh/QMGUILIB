@@ -1,5 +1,6 @@
 #include "LeonWgt.h"
 #include "ui_LeonWgt.h"
+#include "../QMGUILIB/LCommon.h"
 
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 700
@@ -44,4 +45,43 @@ void LeonWgt::InitUI()
     setShowMinBtn(true);
     // 显示最大化按钮
     setShowMaxBtn(true);
+
+    SignalConnects();
+}
+
+
+
+/*
+* @author by lhh
+* @brief 控件的信号连接
+* @param 无
+* @return void
+*/
+void LeonWgt::SignalConnects()
+{
+    connect(ui->m_pInfomationBtn, SIGNAL(clicked()), this, SLOT(onInfomationBtn()));
+    connect(ui->m_pQuestionBtn, SIGNAL(clicked()), this, SLOT(onQuestionBtn()));
+    connect(ui->m_pWarningBtn, SIGNAL(clicked()), this, SLOT(onWarningBtn()));
+    connect(ui->m_pErrorBtn, SIGNAL(clicked()), this, SLOT(onErrorBtn()));
+}
+
+void LeonWgt::onInfomationBtn()
+{
+    LCommon::ShowMessageBoxInfo("消息已发送完成！");
+
+}
+
+void LeonWgt::onQuestionBtn()
+{
+    LCommon::ShowMessageBoxQuesion("亲，你今天捡肥皂了吗？");
+}
+
+void LeonWgt::onWarningBtn()
+{
+    LCommon::ShowMessageBoxWarning("变量Leonm没有被使用！");
+}
+
+void LeonWgt::onErrorBtn()
+{
+    LCommon::ShowMessageBoxError("空指针异常！");
 }
