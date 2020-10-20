@@ -60,7 +60,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setShowTitleIcon(bool bIcon);
+    void setShowTitleIcon(bool bIcon);
 
     /**
     * @author by LHH
@@ -68,7 +68,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setWindowTitle(const QString &text);
+    void setWindowTitle(const QString &text);
 
     /**
     * @author by LHH
@@ -76,7 +76,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setDragable(bool bDragable);
+    void setDragable(bool bDragable);
 
     /**
     * @author by LHH
@@ -84,7 +84,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setResizable(bool bResizable);
+    void setResizable(bool bResizable);
 
     /**
     * @author by LHH
@@ -92,7 +92,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setMaxable(bool bMaxable);
+    void setMaxable(bool bMaxable);
 
     /**
     * @author by LHH
@@ -100,7 +100,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setShowMinBtn(bool bMin);
+    void setShowMinBtn(bool bMin);
 
     /**
     * @author by LHH
@@ -108,7 +108,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setShowMaxBtn(bool bMax);
+    void setShowMaxBtn(bool bMax);
 
     /**
     * @author by LHH
@@ -116,7 +116,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void addOptionAct(const QString &strText);
+    void addOptionAct(const QString &strText);
 
     /**
     * @author by LHH
@@ -124,7 +124,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void setShowMoreOptions(bool bOpt);
+    void setShowMoreOptions(bool bOpt);
 
     /**
     * @author by LHH
@@ -132,7 +132,7 @@ public:
     * @param    无
     * @return   void
     */
-    QMGUILIBSHARED_EXPORT void InitTitle(ETitleType eTitleType);
+    void InitTitle(ETitleType eTitleType);
 
     /************************************************************************
     *   外部公共接口——结束

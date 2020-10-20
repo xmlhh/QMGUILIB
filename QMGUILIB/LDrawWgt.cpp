@@ -55,10 +55,10 @@ void LDrawWgt::InitTitle(ETitleType eTitleType)
 
     // 使用字库图标
 //    IconHelper::Instance()->SetIcon(m_pHeaderIcon, QChar(0xf118), 12);
-    IconHelper::Instance()->SetIcon(m_pMinBtn, QChar(0xf068), 11);
-    IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 11);
-    IconHelper::Instance()->SetIcon(m_pCloseBtn, QChar(0xf00d), 11);
-    IconHelper::Instance()->SetIcon(m_pOptBtn, QChar(0xf0ca), 12);
+    IconHelper::Instance()->SetIcon(m_pMinBtn, QChar(0xf068), 12);
+    IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 13);
+    IconHelper::Instance()->SetIcon(m_pCloseBtn, QChar(0xf00d), 13);
+    IconHelper::Instance()->SetIcon(m_pOptBtn, QChar(0xf0c9), 13);
 }
 
 void LDrawWgt::InitTitle()
@@ -84,10 +84,10 @@ void LDrawWgt::InitTitle()
 
     // 使用字库图标
 //    IconHelper::Instance()->SetIcon(m_pHeaderIcon, QChar(0xf118), 12);
-    IconHelper::Instance()->SetIcon(m_pMinBtn, QChar(0xf068), 11);
-    IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 11);
-    IconHelper::Instance()->SetIcon(m_pCloseBtn, QChar(0xf00d), 11);
-    IconHelper::Instance()->SetIcon(m_pOptBtn, QChar(0xf0ca), 12);
+    IconHelper::Instance()->SetIcon(m_pMinBtn, QChar(0xf068), 12);
+    IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 13);
+    IconHelper::Instance()->SetIcon(m_pCloseBtn, QChar(0xf00d), 13);
+    IconHelper::Instance()->SetIcon(m_pOptBtn, QChar(0xf0c9), 13);
 }
 
 
@@ -470,23 +470,33 @@ void LDrawWgt::setUpDlgUi_2()
 */
 void LDrawWgt::setUpDlgUi_3()
 {
-    // 新建主垂直布局
-    QHBoxLayout *pShadowLayout = new QHBoxLayout(this);
-    pShadowLayout->setSpacing(0);
-    pShadowLayout->setMargin(15);
+//    // 新建主垂直布局
+//    QHBoxLayout *pShadowLayout = new QHBoxLayout(this);
+//    pShadowLayout->setSpacing(0);
+//    pShadowLayout->setMargin(15);
 
-    // 新建背景窗口
-    m_pShadowWidget = new QWidget(this);
-    m_pShadowWidget->setObjectName("m_pShadowWidget");
-    pShadowLayout->addWidget(m_pShadowWidget);
+//    // 新建背景窗口
+//    m_pShadowWidget = new QWidget(this);
+//    m_pShadowWidget->setObjectName("m_pShadowWidget");
+//    pShadowLayout->addWidget(m_pShadowWidget);
+
+//    // 新建主垂直布局
+//    QVBoxLayout *pBgLayout = new QVBoxLayout(m_pShadowWidget);
+//    pBgLayout->setSpacing(0);
+//    pBgLayout->setMargin(0);
+
+//    // 新建主窗口
+//    m_pBgWidget = new QWidget(m_pShadowWidget);
+//    m_pBgWidget->setObjectName("m_pBgWidget");
+//    pBgLayout->addWidget(m_pBgWidget);
 
     // 新建主垂直布局
-    QVBoxLayout *pBgLayout = new QVBoxLayout(m_pShadowWidget);
+    QVBoxLayout *pBgLayout = new QVBoxLayout(this);
     pBgLayout->setSpacing(0);
     pBgLayout->setMargin(0);
 
     // 新建主窗口
-    m_pBgWidget = new QWidget(m_pShadowWidget);
+    m_pBgWidget = new QWidget(this);
     m_pBgWidget->setObjectName("m_pBgWidget");
     pBgLayout->addWidget(m_pBgWidget);
 
@@ -581,8 +591,8 @@ void LDrawWgt::setUpDlgUi_3()
     // 标题栏图标
     m_pHeaderIcon = new QLabel(pHeaderTitleWgt);
     m_pHeaderIcon->setObjectName("m_pHeaderIcon");
-    m_pHeaderIcon->setMinimumSize(QSize(86, 58));
-    m_pHeaderIcon->setMaximumSize(QSize(86, 58));
+    m_pHeaderIcon->setMinimumSize(QSize(200, 58));
+    m_pHeaderIcon->setMaximumSize(QSize(200, 58));
 //    m_pHeaderIcon->setPixmap(QPixmap(":/Data/Image/Icon.png").scaled(m_pHeaderIcon->size(), Qt::IgnoreAspectRatio));
 
 //    // 新建标题栏名称控件
@@ -767,7 +777,7 @@ void LDrawWgt::initMenuOption()
 
 //    m_pPopMenu->addAction(act_1);
 //    m_pPopMenu->addAction(act_2);
-    m_pPopMenu->addAction(act);
+//    m_pPopMenu->addAction(act);
 //    m_pPopMenu->addAction(act_3);
 //    m_pPopMenu->addAction(act_4);
 //    m_pPopMenu->addAction(act_5);
@@ -878,12 +888,12 @@ void LDrawWgt::OnMaxRestoreBtn()
         showNormal();
         m_pFilter->setDragable(true);
         m_pMaxBtn->setToolTip("最大化");
-        IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 11);
+        IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d0), 13);
     } else {
         showMaximized();
         m_pFilter->setDragable(false);
         m_pMaxBtn->setToolTip("还原");
-        IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d2), 11);
+        IconHelper::Instance()->SetIcon(m_pMaxBtn, QChar(0xf2d2), 12);
     }
 
     m_bMaxFlag = !m_bMaxFlag;
