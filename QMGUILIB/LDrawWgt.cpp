@@ -71,7 +71,7 @@ void LDrawWgt::InitTitle()
 //    IconHelper::Instance()->SetIcon(m_pHeaderIcon, QChar(0xf118), 12);
 #else
 //    setUpDlgUi_3();
-    setUpDlgUi_4();
+    setUpDlgUi_shadow();
 #endif
 
     initMenuOption();
@@ -465,31 +465,11 @@ void LDrawWgt::setUpDlgUi_2()
 
 /**
 * @author by LHH
-* @brief 标题栏：大标题栏（左）+ 小按钮组（右上）
+* @brief 标题栏：大标题栏（标题左上，logo左下）+ 小按钮组（右上）
 * @return void
 */
 void LDrawWgt::setUpDlgUi_3()
 {
-//    // 新建主垂直布局
-//    QHBoxLayout *pShadowLayout = new QHBoxLayout(this);
-//    pShadowLayout->setSpacing(0);
-//    pShadowLayout->setMargin(15);
-
-//    // 新建背景窗口
-//    m_pShadowWidget = new QWidget(this);
-//    m_pShadowWidget->setObjectName("m_pShadowWidget");
-//    pShadowLayout->addWidget(m_pShadowWidget);
-
-//    // 新建主垂直布局
-//    QVBoxLayout *pBgLayout = new QVBoxLayout(m_pShadowWidget);
-//    pBgLayout->setSpacing(0);
-//    pBgLayout->setMargin(0);
-
-//    // 新建主窗口
-//    m_pBgWidget = new QWidget(m_pShadowWidget);
-//    m_pBgWidget->setObjectName("m_pBgWidget");
-//    pBgLayout->addWidget(m_pBgWidget);
-
     // 新建主垂直布局
     QVBoxLayout *pBgLayout = new QVBoxLayout(this);
     pBgLayout->setSpacing(0);
@@ -593,12 +573,6 @@ void LDrawWgt::setUpDlgUi_3()
     m_pHeaderIcon->setObjectName("m_pHeaderIcon");
     m_pHeaderIcon->setMinimumSize(QSize(200, 58));
     m_pHeaderIcon->setMaximumSize(QSize(200, 58));
-//    m_pHeaderIcon->setPixmap(QPixmap(":/Data/Image/Icon.png").scaled(m_pHeaderIcon->size(), Qt::IgnoreAspectRatio));
-
-//    // 新建标题栏名称控件
-//    m_pHeaderLabel = new QLabel(pHeaderTitleWgt);
-//    m_pHeaderLabel->setObjectName("m_pHeaderLabel");
-//    m_pHeaderLabel->setMinimumSize(QSize(145, 0));
 
     // 将标题栏名称控件添加到标题栏水平布局中
     pHeaderTitleHBoxLayout->addWidget(m_pHeaderIcon);
@@ -621,10 +595,154 @@ void LDrawWgt::setUpDlgUi_3()
 
 /**
 * @author by LHH
-* @brief    标题栏：大标题栏（左）+ 小按钮组（右上）+ 窗口阴影框
+* @brief    标题栏：大标题栏（logo在左，标题靠右）+ 小按钮组（右上）
 * @return   void
 */
 void LDrawWgt::setUpDlgUi_4()
+{
+    // 新建主垂直布局
+    QVBoxLayout *pBgLayout = new QVBoxLayout(this);
+    pBgLayout->setSpacing(0);
+    pBgLayout->setMargin(0);
+
+    // 新建主窗口
+    m_pBgWidget = new QWidget(this);
+    m_pBgWidget->setObjectName("m_pBgWidget");
+    pBgLayout->addWidget(m_pBgWidget);
+
+    // 新建主窗口垂直布局
+    QVBoxLayout *pMainVBoxLayout = new QVBoxLayout(m_pBgWidget);
+    pMainVBoxLayout->setSpacing(0);
+    pMainVBoxLayout->setMargin(0);
+
+    // 新建标题栏窗口
+    m_pHeaderWidget = new QWidget(m_pBgWidget);
+    m_pHeaderWidget->setObjectName("m_pHeaderWidget");
+    m_pHeaderWidget->setMinimumSize(QSize(0, 100));
+    m_pHeaderWidget->setMaximumSize(QSize(16777215, 100));
+
+    // 新建标题栏水平布局
+    QHBoxLayout *pHeaderHBoxLayout = new QHBoxLayout(m_pHeaderWidget);
+    pHeaderHBoxLayout->setSpacing(0);
+    pHeaderHBoxLayout->setContentsMargins(10, 0, 0, 0);
+
+    // 新建右边按钮组垂直布局
+    QWidget *pHeaderRightWgt = new QWidget(m_pHeaderWidget);
+    QVBoxLayout *pHeaderRightVBoxLayout = new QVBoxLayout(pHeaderRightWgt);
+    pHeaderRightVBoxLayout->setSpacing(2);
+    pHeaderRightVBoxLayout->setContentsMargins(4, 0, 0, 4);
+
+    // 新建标题栏(Big)
+    QWidget *pHeaderTitleWgt = new QWidget(m_pHeaderWidget);
+    QHBoxLayout *pHeaderTitleHBoxLayout = new QHBoxLayout(pHeaderTitleWgt);
+    pHeaderTitleHBoxLayout->setSpacing(2);
+    pHeaderTitleHBoxLayout->setContentsMargins(4, 0, 0, 4);
+
+    // 标题栏图标
+    m_pHeaderIcon = new QLabel(pHeaderTitleWgt);
+    m_pHeaderIcon->setObjectName("m_pHeaderIcon");
+    m_pHeaderIcon->setMinimumSize(QSize(130, 58));
+    m_pHeaderIcon->setMaximumSize(QSize(200, 58));
+
+    // 新建标题栏名称控件
+    m_pHeaderLabel = new QLabel(pHeaderTitleWgt);
+    m_pHeaderLabel->setObjectName("m_pHeaderLabel");
+    m_pHeaderLabel->setMinimumSize(QSize(145, 0));
+
+    // 将标题栏名称控件添加到标题栏水平布局中
+    pHeaderTitleHBoxLayout->addWidget(m_pHeaderIcon);
+    pHeaderTitleHBoxLayout->addWidget(m_pHeaderLabel);
+    pHeaderTitleHBoxLayout->addStretch();
+
+    // 新建标题栏+配置按钮行
+    QWidget *pHeaderGroupBtnWgt = new QWidget(m_pHeaderWidget);
+    pHeaderGroupBtnWgt->setMinimumSize(QSize(0, 35));
+    pHeaderGroupBtnWgt->setMaximumSize(QSize(16777215, 35));
+
+    QHBoxLayout *pHeaderGroupBtnHBoxLayout = new QHBoxLayout(pHeaderGroupBtnWgt);
+    pHeaderGroupBtnHBoxLayout->setSpacing(0);
+    pHeaderGroupBtnHBoxLayout->setContentsMargins(0, 0, 0, 0);
+
+    // 新建选项
+    m_pOptBtn = new QPushButton(pHeaderGroupBtnWgt);
+    m_pOptBtn->setObjectName("m_pOptBtn");
+    m_pOptBtn->setMinimumSize(QSize(38, 35));
+    m_pOptBtn->setMaximumSize(QSize(38, 35));
+    m_pOptBtn->setText("");
+    m_pOptBtn->setFlat(true);
+    m_pOptBtn->setToolTip("选项");
+    m_pOptBtn->setFocusPolicy(Qt::NoFocus);
+    connect(m_pOptBtn, SIGNAL(clicked()), this, SLOT(OnOptionsBtn()));
+
+    // 新建最小化按钮
+    m_pMinBtn = new QPushButton(pHeaderGroupBtnWgt);
+    m_pMinBtn->setObjectName("m_pMinBtn");
+    m_pMinBtn->setMinimumSize(QSize(38, 35));
+    m_pMinBtn->setMaximumSize(QSize(38, 35));
+    m_pMinBtn->setText("");
+    m_pMinBtn->setFlat(true);
+    m_pMinBtn->setToolTip("最小化");
+    m_pMinBtn->setFocusPolicy(Qt::NoFocus);
+    connect(m_pMinBtn, SIGNAL(clicked()), this, SLOT(showMinimized()));
+
+    // 新建最大化按钮
+    m_pMaxBtn = new QPushButton(pHeaderGroupBtnWgt);
+    m_pMaxBtn->setObjectName("m_pMaxBtn");
+    m_pMaxBtn->setMinimumSize(QSize(38, 35));
+    m_pMaxBtn->setMaximumSize(QSize(38, 35));
+    m_pMaxBtn->setText("");
+    m_pMaxBtn->setFlat(true);
+    m_pMaxBtn->setToolTip("最大化");
+    m_pMaxBtn->setFocusPolicy(Qt::NoFocus);
+    connect(m_pMaxBtn, SIGNAL(clicked()), this, SLOT(OnMaxRestoreBtn()));
+
+    // 新建标题栏关闭按钮控件
+    m_pCloseBtn = new QPushButton(pHeaderGroupBtnWgt);
+    m_pCloseBtn->setObjectName("m_pCloseBtn");
+    m_pCloseBtn->setMinimumSize(QSize(38, 35));
+    m_pCloseBtn->setMaximumSize(QSize(38, 35));
+    m_pCloseBtn->setText("");
+    m_pCloseBtn->setFlat(true);
+    m_pCloseBtn->setToolTip("关闭");
+    m_pCloseBtn->setFocusPolicy(Qt::NoFocus);
+    connect(m_pCloseBtn, SIGNAL(clicked()), this, SLOT(close()));
+
+    // 将关闭按钮控件添加到标题栏水平布局中
+    pHeaderGroupBtnHBoxLayout->addStretch();
+    pHeaderGroupBtnHBoxLayout->addWidget(m_pOptBtn);
+    pHeaderGroupBtnHBoxLayout->addWidget(m_pMinBtn);
+    pHeaderGroupBtnHBoxLayout->addWidget(m_pMaxBtn);
+    pHeaderGroupBtnHBoxLayout->addWidget(m_pCloseBtn);
+
+    pHeaderRightVBoxLayout->addWidget(pHeaderGroupBtnWgt);
+    pHeaderRightVBoxLayout->addStretch();
+
+
+
+    pHeaderHBoxLayout->addWidget(pHeaderTitleWgt);
+    pHeaderHBoxLayout->addStretch();
+    pHeaderHBoxLayout->addWidget(pHeaderRightWgt);
+
+//    pHeaderVBoxLayout->addWidget(pHeaderGroupBtnWgt);
+//    pHeaderVBoxLayout->setSpacing(0);
+//    pHeaderVBoxLayout->addWidget(pHeaderTitleWgt);
+
+    // 将标题栏窗口添加到主垂直布局中
+    pMainVBoxLayout->addWidget(m_pHeaderWidget);
+
+    // 新建中心窗口
+    m_pCenterWidget = new QWidget;
+
+    // 将中心窗口添加到主垂直布局中
+    pMainVBoxLayout->addWidget(m_pCenterWidget);
+}
+
+/**
+* @author by LHH
+* @brief    标题栏：大标题栏（左）+ 小按钮组（右上）+ 窗口阴影框
+* @return   void
+*/
+void LDrawWgt::setUpDlgUi_shadow()
 {
     // 新建主垂直布局
     QVBoxLayout *pBgLayout = new QVBoxLayout(this);
@@ -858,17 +976,20 @@ void LDrawWgt::setTitleLayout(ETitleType eTitleType)
     case NORMAL:
         setUpDlgUi();
         break;
-    case SMALL:
+    case SMALL_LEFT_RIGHT:
         setUpDlgUi_1();
         break;
-    case MEDIUM:
+    case MEDIUM_LEFT_RIGHT_BOTTOM:
         setUpDlgUi_2();
         break;
-    case LARGE:
+    case LARGE_LEFT_TOP_BOTTOM:
         setUpDlgUi_3();
         break;
-    case SHADOW:
+    case LARGE_LEFT_CENTER_RIGHT:
         setUpDlgUi_4();
+        break;
+    case SHADOW:
+        setUpDlgUi_shadow();
         break;
     default:
         break;

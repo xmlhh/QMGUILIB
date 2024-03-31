@@ -42,9 +42,10 @@ public:
     // 标题栏布局
     enum ETitleType {
         NORMAL = 0,
-        SMALL,
-        MEDIUM,
-        LARGE,
+        SMALL_LEFT_RIGHT,
+        MEDIUM_LEFT_RIGHT_BOTTOM,
+        LARGE_LEFT_TOP_BOTTOM,
+        LARGE_LEFT_CENTER_RIGHT,
         SHADOW
     };
 
@@ -251,17 +252,24 @@ private:
 
     /**
     * @author by LHH
-    * @brief    标题栏：大标题栏（左）+ 小按钮组（右上）
+    * @brief    标题栏：大标题栏（标题左上，logo左下）+ 小按钮组（右上）
     * @return   void
     */
     void setUpDlgUi_3();
 
     /**
     * @author by LHH
-    * @brief    标题栏：大标题栏（左）+ 小按钮组（右上）+ 窗口阴影框
+    * @brief    标题栏：大标题栏（logo在左，标题靠右）+ 小按钮组（右上）
     * @return   void
     */
     void setUpDlgUi_4();
+
+    /**
+    * @author by LHH
+    * @brief    标题栏：大标题栏（标题左上，logo左下）+ 小按钮组（右上）+ 窗口阴影框
+    * @return   void
+    */
+    void setUpDlgUi_shadow();
 
     /**
     * @author by LHH
